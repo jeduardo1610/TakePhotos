@@ -12,6 +12,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     var imagePickerController : UIImagePickerController!
 
+    @IBOutlet weak var pathLabel: UILabel!
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -37,11 +38,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     
     @IBAction func onSavePhoto(_ sender: Any) {
-        saveImage(imageName: "testTakePhotoApp.pngº")
+        saveImage(imageName: "testTakePhotoApp.png")
     }
     
     
     @IBAction func onGoToGallery(_ sender: Any) {
+        performSegue(withIdentifier: "gallerySegue", sender: self)
     }
     
     func saveImage(imageName: String){
@@ -49,6 +51,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         let fileManager = FileManager.default
         //get the image path
         let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
+        pathLabel.text = imagePath
         //get the image we took with camera
         let image = imageView.image!
         //get the PNG data for this image
@@ -62,6 +65,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         imagePickerController.dismiss(animated: true, completion: nil) //dismiss camera controller
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage//stores in our imageView variable the image that was taken by the camera
     }
+    
+    @IBAction func unWind(segue: UIStoryboardSegue) {}
     
 }
 
