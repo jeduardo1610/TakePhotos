@@ -46,6 +46,7 @@
                                         <state key="normal" title="Go to Gallery"/>
                                         <connections>
                                             <action selector="onGoToGallery:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p2K-Yj-juQ"/>
+                                            <segue destination="ajW-B9-JSb" kind="presentation" identifier="gallerySegue" id="SoQ-uv-RuY"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -69,6 +70,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+        <!--Gallery Viewcontroller-->
+        <scene sceneID="gGT-85-1Rm">
+            <objects>
+                <viewController id="ajW-B9-JSb" customClass="GalleryViewcontroller" customModule="TakePhotos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sXY-g0-YT8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m1I-FH-glp">
+                                <rect key="frame" x="0.0" y="140" width="375" height="527"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gallery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hi9-ld-I8F">
+                                <rect key="frame" x="0.0" y="50" width="375" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="m1I-FH-glp" firstAttribute="top" secondItem="Hi9-ld-I8F" secondAttribute="bottom" constant="60" id="4y9-xt-ydJ"/>
+                            <constraint firstItem="r0Z-hu-aKJ" firstAttribute="trailing" secondItem="m1I-FH-glp" secondAttribute="trailing" id="Aug-qC-3mq"/>
+                            <constraint firstItem="Hi9-ld-I8F" firstAttribute="top" secondItem="r0Z-hu-aKJ" secondAttribute="top" constant="30" id="Dxu-Sy-THc"/>
+                            <constraint firstItem="m1I-FH-glp" firstAttribute="leading" secondItem="r0Z-hu-aKJ" secondAttribute="leading" id="IY4-sl-6f9"/>
+                            <constraint firstItem="r0Z-hu-aKJ" firstAttribute="bottom" secondItem="m1I-FH-glp" secondAttribute="bottom" id="cGB-ws-Mqy"/>
+                            <constraint firstItem="Hi9-ld-I8F" firstAttribute="leading" secondItem="r0Z-hu-aKJ" secondAttribute="leading" id="fEo-VZ-MjR"/>
+                            <constraint firstItem="r0Z-hu-aKJ" firstAttribute="trailing" secondItem="Hi9-ld-I8F" secondAttribute="trailing" id="txz-PA-Jdw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="r0Z-hu-aKJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="m1I-FH-glp" id="doX-b5-KCd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RzB-xq-itK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="848.79999999999995" y="133.5832083958021"/>
         </scene>
     </scenes>
     <resources>
