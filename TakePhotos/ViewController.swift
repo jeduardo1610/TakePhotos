@@ -8,8 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
+    var imagePickerController : UIImagePickerController!
+
+    
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
@@ -24,6 +27,12 @@ class ViewController: UIViewController {
 
     
     @IBAction func onTakePhoto(_ sender: Any) {
+        //this will open the controller with the camera
+        imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .camera
+        present(imagePickerController, animated: true, completion: nil)
+        
     }
     
     
@@ -32,6 +41,13 @@ class ViewController: UIViewController {
     
     
     @IBAction func onGoToGallery(_ sender: Any) {
+    }
+    
+    
+    //MARK: UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        imagePickerController.dismiss(animated: true, completion: nil) //dismiss camera controller
+        imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage//stores in our imageView variable the image that was taken by the camera
     }
     
 }
