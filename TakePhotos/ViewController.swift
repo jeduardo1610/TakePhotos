@@ -37,12 +37,25 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     
     @IBAction func onSavePhoto(_ sender: Any) {
+        saveImage(imageName: "testTakePhotoApp.pngº")
     }
     
     
     @IBAction func onGoToGallery(_ sender: Any) {
     }
     
+    func saveImage(imageName: String){
+        //create an instance of the FileManager
+        let fileManager = FileManager.default
+        //get the image path
+        let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
+        //get the image we took with camera
+        let image = imageView.image!
+        //get the PNG data for this image
+        let data = UIImagePNGRepresentation(image)
+        //store it in the document directory    fileManager.createFile(atPath: imagePath as String, contents: data, attributes: nil)
+        fileManager.createFile(atPath: imagePath as String, contents: data, attributes: nil)
+    }
     
     //MARK: UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
